@@ -6,5 +6,5 @@ description
 ### How does it work?
 In the example/ folder, we provide plots and files to perform a procession, taken from our data. Alternatively you can use your own data. Start with something not too large, for example 1Mb. And read on.
 ### Tissue pixels identification
-Try out the XX.py, executing each line step by step. REMAIN takes abundance of m/z as input, in .txt format (see below for file format descriptions). CONTINUED integration is performed on multiple datasets simultaneously. All .txt files are pre-processed and put into a single CSnorm object that will hold all relevant information you need. At this point, you will also be able to visualize your data using our base-resolution (arrows) representation.
+Try out the XX.py, executing each line step by step. REMAIN takes abundance of m/z as input, in .txt format (see below for file format descriptions). CONTINUED integration is performed on multiple datasets simultaneously. All .txt files are pre-processed and put into a 
 
