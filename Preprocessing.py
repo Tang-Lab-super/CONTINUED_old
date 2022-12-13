@@ -14,7 +14,7 @@ def find_interest_factor(data_file_path, mz_from_path, mz, threshold, sample):
         hmat_0331 = get_raw_tissue(ST87_20210331un_5k, mz, threshold)
         df_data = get_max_contour(hmat_0331, 2)
         """
-        路径mz_from_path下会生成两个图像文件gray.png和erode.gray.png，可以查看筛子是否符合形状，
+        路径mz_from_path下会生成两个图像文件gray.png和eroded_gray.png，可以查看筛子是否符合形状，
         若符合，继续往下，若不符合，适当修改mz和threshold
         """
         df_data = erode_tissue(5)   
