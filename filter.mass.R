@@ -4,7 +4,7 @@
 ########################################################################################################################
 rm(list=ls())
 
-work_dir <- csv_output_dir_path
+work_dir <- csv_output_dir_path   #same file path as the output path in Preprocessing
 setwd(work_dir)
 
 """
