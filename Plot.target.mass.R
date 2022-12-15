@@ -61,15 +61,15 @@ Create_New_Obj <- function(sample_name, dir_path, obj_path, dir_mass_merged){
 
 ########################################################################################################################
 """
-ÖÆ×÷Ò»¸öfile.infor.txtÎÄ¼þ£¬ÁÐÃû"Sample","Object",Ã¿ÐÐ·Ö±ð¶ÔÓ¦Ã¿¸öÑùÆ·µÄÃû³Æ¡¢desi.lock.mass.adjust.rdsÎÄ¼þÂ·¾¶
+åˆ¶ä½œä¸€ä¸ªfile.infor.txtæ–‡ä»¶ï¼Œåˆ—å"Sample","Object",æ¯è¡Œåˆ†åˆ«å¯¹åº”æ¯ä¸ªæ ·å“çš„åç§°ã€desi.lock.mass.adjust.rdsæ–‡ä»¶è·¯å¾„
 """
 
 infor <- as.data.frame(read.table(file="file.infor.txt", header=T))
-dir_path <- output_dir   #ËùÓÐÑùÆ·ÓÃ×î¼Ñ²ÎÊý×ö¾ÛÀàÉú³ÉµÄrdsÎÄ¼þËùÔÚÂ·¾¶
+dir_path <- output_dir   #æ‰€æœ‰æ ·å“ç”¨æœ€ä½³å‚æ•°åšèšç±»ç”Ÿæˆçš„rdsæ–‡ä»¶æ‰€åœ¨è·¯å¾„
 """
-´Ómerge.mass.plµÄÊä³öÎÄ¼þcolon_cancer_desi.clustered_mass.table.with.anno.txtÖÐ»ñÈ¡Ã¿¸öÑùÆ·µÄsample_mass.txt£¬
-ÁÐÃû"Index","sample_mass"£¬·Ö±ðÊÇÑùÆ·m/z¶ÔÓ¦Ë÷ÒýºÍm/z£¬
-ËùÓÐsample_mass.txt´æ´¢ÔÚmerged.mass.for.sample/Â·¾¶ÏÂ
+ä»Žmerge.mass.plçš„è¾“å‡ºæ–‡ä»¶colon_cancer_desi.clustered_mass.table.with.anno.txtä¸­èŽ·å–æ¯ä¸ªæ ·å“çš„sample_mass.txtï¼Œ
+åˆ—å"Index","sample_mass"ï¼Œåˆ†åˆ«æ˜¯æ ·å“m/zå¯¹åº”ç´¢å¼•å’Œm/zï¼Œ
+æ‰€æœ‰sample_mass.txtå­˜å‚¨åœ¨merged.mass.for.sample/è·¯å¾„ä¸‹
 """
 dir_mass_merged <- 'merged.mass.for.sample/'
 
@@ -78,7 +78,7 @@ for (l in 1:dim(infor)[1]){
 	obj_path <- infor[l, 2]
 	assign(paste0('obj_', sample_name), Create_New_Obj(sample_name, dir_path, obj_path, dir_mass_merged))
 """
-´Ómerge.mass.plµÄÊä³öÎÄ¼þcolon_cancer_desi.clustered_mass.table.with.anno.txtÖÐ»ñÈ¡µÚÒ»ÁÐ£¬×÷Îªannotated.mass.index.txt
+ä»Žmerge.mass.plçš„è¾“å‡ºæ–‡ä»¶colon_cancer_desi.clustered_mass.table.with.anno.txtä¸­èŽ·å–ç¬¬ä¸€åˆ—ï¼Œä½œä¸ºannotated.mass.index.txt
 """
 	annotated_mass <- read.table(file="annotated.mass.index.txt", header=T)
 	annotated_mass <- paste0(rep('Mass-Index-', length(annotated_mass$Index)), annotated_mass$Index)
