@@ -1,5 +1,6 @@
 """
-新建一个文件夹csv_output_dir_path，再分别建立每个样品对应的文件夹，以样品名sample命名，存放该样品对应的Preprocessing.py输出文件
+Create a new folder named 'csv_output_dir_path'. Then create some folders under it. One sample corresponds to one folder. Each folder is named after the 
+corresponding sample name. The Preprocessing.py output files are stored in these folders.
 """
 
 def find_interest_factor(data_file_path, mz_from_path, mz, threshold, sample):
