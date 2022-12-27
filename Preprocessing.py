@@ -7,7 +7,7 @@ def find_interest_factor(data_file_path, mz_from_path, mz, threshold, sample):
         找出符合要求的筛子因子
         """
         ST87_20210331un_5k = pd.read_csv(data_file_path, sep = '\t')
-        os.chdir(mz_from_path)     #mz_from_path路径下必须有数据，从中寻找阈值m/z
+        os.chdir(mz_from_path)     #mz_from_path路径下必须有数据，从中寻找阈值m/z，可能与data_file_path相同，这取决于你存放数据的位置。
         mz = mz
         threshold = threshold
         sample = sample
