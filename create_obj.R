@@ -1,9 +1,5 @@
 
 
-# /home/yuchen/miniconda3/envs/R4.0/bin/R
-# /home/yuchen/miniconda3/envs/R4.0/bin/Rscript --vanilla \
-
-
 args = commandArgs(trailingOnly=TRUE)
 if (length(args) != 5) {
   stop("input sample name, nor method, npcs, resolution", call.=FALSE)
@@ -78,4 +74,5 @@ coor_border_cluster_all <- plot_seurat_clusters_border(desi_unlock_mass_obj, sig
 write.table(coor_border_cluster_all, file=paste0(dir, "/", "coor_border_cluster_all.txt"), quote=F, sep="\t", row.names=F, col.names=T)
 rm(dir)
 
-########################################################################################################################
+
+
