@@ -12,6 +12,6 @@ See `filter.mass.R`. It filter m/z max intensity is less than 400.
 ### Parameter selection
 The clustering results of samples change with the parameter npc and resolution. In `Parameters.test.R`, you can test a series of npcs and resolutions. Select the final parameters according to the results.
 ### create seurat object
-See `creat_obj.R`. Create three seurat object `.rds` files with parameters selected in Parameters.test.R. You can choose to plot the complete clustering image, the single clustering image or the boundary image.
+See `creat_obj.R`. Create three seurat object `.rds` files with parameters selected in `Parameters.test.R`. You can choose to plot the complete clustering image, the single clustering image or the boundary image.
 
 
