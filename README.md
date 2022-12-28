@@ -11,6 +11,7 @@ Try out the `Preprocessing.py`. CONTINUED takes two dataframes contained abundan
 See `filter.mass.R`. It filter m/z max intensity is less than 400.
 ### Parameter selection
 The clustering results of samples change with the parameter npc and resolution. In `Parameters.test.R`, you can test a series of npcs and resolutions. Select the final parameters according to the results.
-
+### create seurat object
+See `creat_obj.R`. Create the final seurat object `.RDS` file
 
 
