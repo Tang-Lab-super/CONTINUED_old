@@ -1,15 +1,13 @@
-# /home/yuchen/miniconda3/envs/R4.0/bin/R
-# filter m/z max intensity is less than 400
+"""
+filter m/z max intensity is less than 400
+"""
 
-########################################################################################################################
 rm(list=ls())
 
-work_dir <- csv_output_dir_path   #same file path as the output path in Preprocessing
+work_dir <- csv_output_dir_path   #same file path as the output path in Preprocessing.py
 setwd(work_dir)
 
-"""
-制作一个sample.list.txt文件，储存所有的样品名，每行一个sample
-"""
+# Create a file named sample.list.txt. Store sample names, one sample per line.
 sample_list <- read.table(file="sample.list.txt", header=F)$V1
 
 ################################################################
@@ -17,7 +15,7 @@ for (sample_name in sample_list ){
 print(sample_name)
 setwd(paste0(work_dir, "/", sample_name))
 
-#把原始文件名改成unfilter后缀
+#Change the original file name to the 'unfilter' suffix.
 file.rename(paste0(sample_name,"_3k_signal.lock_mass.txt"), paste0(sample_name,"_3k_signal.lock_mass.unfiltered.txt"))
 file.rename(paste0(sample_name,"_3k_signal.unlock_mass.txt"), paste0(sample_name,"_3k_signal.unlock_mass.unfiltered.txt"))
 
@@ -45,4 +43,5 @@ signal_total_unlock_sel <- signal_total_unlock[, signal_total_unlock[1,] %in% si
 write.table(signal_total_lock_sel, file=paste0(sample_name,"_3k_signal.lock_mass.txt"), quote=F, sep="\t", row.names=F, col.names=F)
 write.table(signal_total_unlock_sel, file=paste0(sample_name,"_3k_signal.unlock_mass.txt"), quote=F, sep="\t", row.names=F, col.names=F)
 }
-########################################################################################################################
+
+
