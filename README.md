@@ -16,7 +16,7 @@ See `creat_obj.R`. Create three seurat object `.rds` files with parameters selec
 ### Plot 3D intensity
 See `Total.intensity.3D_plot.R`. Here, we create a way to assess the quality of the data. Data quality can be preliminarily judged by observing contour shape of 3D map. In our data, if the contour shape presents regular horizontal lines, it is likely to be bad. We will eliminate such data to ensure the accuracy of subsequent analysis.
 ### Integration and annotation of multiple samples of DESI-MS
-We achieve the clustering of m/z by fitting the kernel density function for all m/z values. In `pl`, 
+We achieve the clustering of m/z by fitting the kernel density function for all m/z values. We also annotate m/zs as specific metabolites. See `merge.mass.pl`. This requires Lc-Ms databases, either from your own lab, or from an online database.
 
 
 
