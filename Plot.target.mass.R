@@ -31,9 +31,9 @@ Create_New_Obj <- function(sample_name, dir_path, obj_path, dir_mass_merged){
 
 	mass_merged_tab <- read.table(file=paste0(dir_mass_merged, '/', sample_name, '_mass.txt'), header=T, sep="\t")
 	colnames(mass_merged_tab) <- c('Mass_Index', 'Mass_Value')
-    #bingling add
-    mass_merged_tab$Mass_Value = gsub("0+$","",mass_merged_tab$Mass_Value)
-    mass_merged_tab$Mass_Value = gsub("0+,",",",mass_merged_tab$Mass_Value)
+        #bingling add
+        mass_merged_tab$Mass_Value = gsub("0+$","",mass_merged_tab$Mass_Value)
+        mass_merged_tab$Mass_Value = gsub("0+,",",",mass_merged_tab$Mass_Value)
   
 	mass_merged_tab$Mass_Index <- paste0(rep('Mass-Index-', length(mass_merged_tab$Mass_Index)), mass_merged_tab$Mass_Index)
 	mass_merged_tab$Mass_Index <- sub('_', '-', mass_merged_tab$Mass_Index)
@@ -60,26 +60,23 @@ Create_New_Obj <- function(sample_name, dir_path, obj_path, dir_mass_merged){
 
 
 ########################################################################################################################
-"""
-制作一个file.infor.txt文件，列名"Sample","Object",每行分别对应每个样品的名称、desi.lock.mass.adjust.rds文件路径
-"""
+# Create a new file named 'file.infor.txt' with column names of 'Sample' and 'Object'. Each line includes name of each sample, 
+# 'desi.Lock.Mass.Adjust.RDS' file path.
 
 infor <- as.data.frame(read.table(file="file.infor.txt", header=T))
-dir_path <- output_dir   #所有样品用最佳参数做聚类生成的rds文件所在路径
-"""
-从merge.mass.pl的输出文件colon_cancer_desi.clustered_mass.table.with.anno.txt中获取每个样品的sample_mass.txt，
-列名"Index","sample_mass"，分别是样品m/z对应索引和m/z，
-所有sample_mass.txt存储在merged.mass.for.sample/路径下
-"""
+dir_path <- output_dir   #Path of the clustering .rds file
+# The output file of merge.mass.pl is 'colon_cancer_desi.clustered_mass.table.with.anno.txt'. Get the sample_mass.txt for each sample.
+# The column names "Index" and "sample_mass" are the corresponding index of m/z and m/z respectively.
+# All sample_mass.txt is stored under path 'merged.mass.for.sample/'.
+
 dir_mass_merged <- 'merged.mass.for.sample/'
 
 for (l in 1:dim(infor)[1]){
 	sample_name <- infor[l, 1]
 	obj_path <- infor[l, 2]
 	assign(paste0('obj_', sample_name), Create_New_Obj(sample_name, dir_path, obj_path, dir_mass_merged))
-"""
-从merge.mass.pl的输出文件colon_cancer_desi.clustered_mass.table.with.anno.txt中获取第一列，作为annotated.mass.index.txt
-"""
+
+        #Get first column from 'colon_cancer_desi.clustered_mass.table.with.anno.txt' as 'annotated.mass.index.txt'.
 	annotated_mass <- read.table(file="annotated.mass.index.txt", header=T)
 	annotated_mass <- paste0(rep('Mass-Index-', length(annotated_mass$Index)), annotated_mass$Index)
 	annotated_mass <- sub('_', '-', annotated_mass)
@@ -99,8 +96,6 @@ for (l in 1:dim(infor)[1]){
 
 	}
 }
-
-########################################################################################################################
 
 
 
