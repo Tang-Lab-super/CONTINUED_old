@@ -11,7 +11,12 @@ Try out the `Preprocessing.py`. CONTINUED takes two dataframes contained abundan
 See `filter.mass.R`. It filter m/z max intensity is less than 400.
 ### Parameter selection
 The clustering results of samples change with the parameter npc and resolution. In `Parameters.test.R`, you can test a series of npcs and resolutions. Select the final parameters according to the results.
-### Create seurat object
+### Reconstruction of spatial distribution pattern of organization
 See `creat_obj.R`. Create three seurat object `.rds` files with parameters selected in `Parameters.test.R`. You can choose to plot the complete clustering image, the single clustering image or the boundary image. If you have a lot of samples, `create.obj.with.final.parameters.sh` can help you run more conveniently.
 ### Plot 3D intensity
 See `Total.intensity.3D_plot.R`. Here, we create a way to assess the quality of the data. Data quality can be preliminarily judged by observing contour shape of 3D map. In our data, if the contour shape presents regular horizontal lines, it is likely to be bad. We will eliminate such data to ensure the accuracy of subsequent analysis.
+### Integration and annotation of multiple samples of DESI-MS
+We achieve the clustering of m/z by fitting the kernel density function for all m/z values. In `pl`, 
+
+
+
