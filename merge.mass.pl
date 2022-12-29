@@ -11,6 +11,7 @@ my $output_prefix = 'colon_cancer_desi';
 my $input_sample_list = 'sample.list.txt'; 
 my $work_dir = work_dir;
 
+# Input the LC-MS reference databases. This can come from your own experiments, or online databases.
 my $input_lipid = 'LC_MS_Lipid.txt';
 my $input_small_mol = 'LC_MS_molecule.neg.txt';
 
