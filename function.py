@@ -7,24 +7,24 @@ import seaborn as sns
 import argparse
 import os
 
-def preprocessing(data15):
+def preprocessing(data):
     """
-    :param df:raw DataFrame
+    :param data:raw DataFrame
     """
-    data15 = data15.drop([0])
-    data15 = data15.drop(columns='Unnamed: 0')
-    newcname = data15.columns[3:]  
-    last_column = data15.columns[-1]
-    data15 = data15.drop(columns=last_column)
+    data = data.drop([0])
+    data = data.drop(columns='Unnamed: 0')
+    newcname = data.columns[3:]  
+    last_column = data.columns[-1]
+    data = data.drop(columns=last_column)
     newcname = newcname.insert(0, 'y')
     newcname = newcname.insert(0, 'x')
-    data15.columns = newcname
-    data15.index = range(data15.shape[0])
-    return data15
+    data.columns = newcname
+    data.index = range(data.shape[0])
+    return data
 
-def get_raw_tissue(data15, mz, threshold):
-    tis = data15.loc[:,('x','y',mz)]
-    tis.loc[tis[mz]<=threshold, mz]=0    #背景调0
+def get_raw_tissue(data, mz, threshold):
+    tis = data.loc[:,('x','y',mz)]
+    tis.loc[tis[mz]<=threshold, mz]=0    
     tis.loc[tis[mz]>threshold, mz]=1000
     hmat = tis.pivot(index='y', columns='x', values=mz)
     hmat.index = range(np.shape(hmat)[0])
@@ -71,22 +71,25 @@ def erode_tissue(kernel_size):
     return df
 
 
-def remove_bl(data15,df,num,bg_percent):    #背景信号和边缘模糊信号都去掉
+def remove_bl(data,df,num,bg_percent):  
+    """
+    :param num:raw DataFrame
+    """
     df[df==255]=1
     mz_tissue = []
-    for j in range(2,np.shape(data15)[1]):   #1000个m/z
-        tis = data15.iloc[:,[0,1,j]]
+    for j in range(2,np.shape(data)[1]):   
+        tis = data.iloc[:,[0,1,j]]
         tis.index = range(1,np.shape(tis)[0]+1)
         per = np.percentile(tis.iloc[:,2],num)
         hmat = tis.pivot(index='y', columns='x', values=tis.columns[2]) 
         hmat.index = range(np.shape(hmat)[0])
         hmat.columns = range(np.shape(hmat)[1])
-        hmat.iloc[:,0:5]=0                       #先去除可能的污染区域
-        count90 = np.sum(np.array(hmat>=per))   #去除亮条之后切片表达值高于90%的元素有4626个，
-        hmat[hmat<per]=0                        #保留90%以上的元素位置，总共有4628个位置非0
-        hmat = df*hmat                          #这个是保守组织区域
-        count_tis = np.sum(np.array(hmat>0))       #寻找90%以上的元素落在组织区域的数量
-        if count_tis/count90>bg_percent:        #80%以上最强信号都落在组织区域认为是真实信号
+        hmat.iloc[:,0:5]=0                       
+        count90 = np.sum(np.array(hmat>=per))   
+        hmat[hmat<per]=0                        
+        hmat = df*hmat                          
+        count_tis = np.sum(np.array(hmat>0))       
+        if count_tis/count90>bg_percent:        
             mz_tissue.append(tis.columns[2])
     data15_signal = data15.loc[:,mz_tissue]
     data15_signal.insert(0, 'x', data15['x'])
