@@ -18,5 +18,9 @@ See `Total.intensity.3D_plot.R`. Here, we create a way to assess the quality of 
 ### Integration and annotation of multiple samples of DESI-MS
 We achieve the clustering of m/z by fitting the kernel density function for all m/z values. We also annotate m/zs as specific metabolites. See `merge.mass.pl`. This requires LC-MS databases, either from your own lab, or from an online database. You will get a dataframe containing clustering and annotation information with prefix `colon_cancer_desi`. This is the most important result.
 ### Plot target m/z
-Plot.target.mass.R
+See `Plot.target.mass.R`. You can visualize the distribution of the same metabolite in different samples.
+### Questions? Problems?
+Check out the FAQ in the GitHub issues tracker. If you don't find anything, just file an issue by clicking on the "New issue" button. You can use it to report bugs, ask questions or suggest new features. We are looking forward to your feedback!
+
+
 
