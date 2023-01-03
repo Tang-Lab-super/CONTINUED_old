@@ -20,7 +20,7 @@ We achieve the clustering of m/z by fitting the kernel density function for all 
 ### Plot target m/z
 See `Plot.target.mass.R`. You can visualize the distribution of the same metabolite in different samples.
 ### Questions? Problems?
-Check out the FAQ in the GitHub issues tracker. If you don't find anything, just file an issue by clicking on the "New issue" button. You can use it to report bugs, ask questions or suggest new features. We are looking forward to your feedback!
+Check out the [FAQ](https://github.com/Tang-Lab-super/CONTINUED/labels/FAQ) in the GitHub issues tracker. If you don't find anything, just file an issue by clicking on the "New issue" button. You can use it to report bugs, ask questions or suggest new features. We are looking forward to your feedback!
 
 
 
