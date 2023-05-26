@@ -2,9 +2,27 @@
 ## CONTINUED: Cluster, integration and annotation of *In situ* metabonomics data
 CONTINUED is a algorithm to process *In situ* metabonomics data include reconstruction of histological spatial structure based on single sample clustering, integration of multiple samples and annotation with LC-MS data.
 ### Installation
-description
+
+#### The easy way
+
+Let `devtools` do the installation for you. Type the following in an R shell
+
+```
+install.packages("devtools")
+devtools::install_github("3DGenomes/binless",subdir="binless")
+```
+
+#### Manual installation
+
+You can also install it manually as follows:
+
+- Download the latest release [here](https://github.com/3DGenomes/binless/releases/latest)
+- Unpack it in a clean folder on your machine, and hit `R CMD INSTALL binless` in a shell.
+- If it complains that some packages are not installed, you must install them in R using `install.packages`
+
 ### How does it work?
-In the `example/` folder, we provide plots and files to perform a procession, taken from our data. Alternatively you can use your own data. Start with a few m/z, for example the top 1000 m/z with the highest abundance. And read on.
+
+In the `example/` folder, we provide datasets and scripts to perform a procession, taken from our data. Alternatively you can use your own data. Start with something not too large, for example 1Mb. And read on.
 ### Background noise removal
 Try out the `Preprocessing.py`. CONTINUED takes two dataframes contained abundance of m/z as input, in `.txt` format. One is generated under lockmass and another is generated under unlockmass. In order to get the coordinates of the tissue image, CONTINUED also needs a m/z and a corresponding threshold as input. The m/z and threshold were selected according to the shape of the HE staining slice. In function `find_interest_factor`, you will get a dataframe `df_data` and two `.png` files in the `mz_from_path`, the images can help you adjust the parameters. You can get three `.txt` files finally as input for `filter.mass.R`.
 ### Filter m/z
