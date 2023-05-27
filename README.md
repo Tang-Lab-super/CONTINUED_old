@@ -2,6 +2,7 @@
 ## CONTINUED: Cluster, integration and annotation of *In situ* metabonomics data
 CONTINUED is a algorithm to process *In situ* metabonomics data include reconstruction of histological spatial structure based on single sample clustering, integration of multiple samples and annotation with LC-MS data.
 ![image](https://github.com/Tang-Lab-super/CONTINUED/assets/120162674/23c75daf-fcee-4c06-b12d-5c547c202419)
+![image](https://github.com/Tang-Lab-super/CONTINUED/assets/120162674/0fda6f03-b465-4f76-b8c4-0e2d958c3c68)
 
 ### Installation
 
