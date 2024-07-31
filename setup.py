@@ -1,6 +1,6 @@
 from setuptools import Command, find_packages, setup
 
-__lib_name__ = "continued"
+__lib_name__ = "CONTINUED"
 __lib_version__ = "1.0.0"
 __description__ = "Cluster, integration and annotation of In situ metabonomics data"
 __url__ = "https://github.com/Tang-Lab-super/CONTINUED"
