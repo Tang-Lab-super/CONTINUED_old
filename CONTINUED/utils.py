@@ -107,7 +107,7 @@ def tissue_detection(df_desi, mz_tissue, to_dir, thresh=500, otsu=False, dilate_
     # 膨胀收缩后找最大连通域定于为组织区域
     kernel_dilate_erode = cv2.getStructuringElement(cv2.MORPH_RECT, (dilate_size, dilate_size))
     dilated = cv2.dilate(tissue_thresh, kernel_dilate_erode)
-    eroded = cv2.erode(tissue_thresh, kernel_dilate_erode)
+    eroded = cv2.erode(dilated, kernel_dilate_erode)
     cv2.imwrite(f'{to_dir}/2.3.tissue.eroded.png', eroded)
 
     contours, hierarchy_ = cv2.findContours(eroded, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
