@@ -32,7 +32,7 @@ def load_raw_desi_data(desi_lm_file, desi_unlm_file, num_mz=3000):
     df_desi_unlm = df_desi_unlm.iloc[:, :(num_mz+2)]
     return df_desi_lm, df_desi_unlm
 
-def check_tissue_mz(mz_tissue_type, mz_tissue, thresh, df_desi_unlm, df_desi_lm, to_dir):
+def check_tissue_mz(mz_tissue_type, mz_tissue, thresh, df_desi_unlm, df_desi_lm, cmap, to_dir):
     # visualization the tissue mz
     if mz_tissue_type == 'unlm':
         df_plot = df_desi_unlm.copy()
