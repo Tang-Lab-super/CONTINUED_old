@@ -1,3 +1,4 @@
+#################################################### Continued pipeline ########################################
 import os
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -31,7 +32,7 @@ def load_raw_desi_data(desi_lm_file, desi_unlm_file, num_mz=3000):
     df_desi_unlm = df_desi_unlm.iloc[:, :(num_mz+2)]
     return df_desi_lm, df_desi_unlm
 
-def check_tissue_mz(mz_tissue_type, mz_tissue, thresh):
+def check_tissue_mz(mz_tissue_type, mz_tissue, thresh, df_desi_unlm, df_desi_lm, to_dir):
     # visualization the tissue mz
     if mz_tissue_type == 'unlm':
         df_plot = df_desi_unlm.copy()
@@ -163,7 +164,7 @@ def create_desi_obj(df_final):
     adata.obsm["spatial"] = df_meta[['x_array', 'y_array']].values
     return adata
 
-def desi_clustering(adata, resolution, prefix):
+def desi_clustering(adata, resolution, prefix, col16):
     sc.pp.scale(adata)
     sc.pp.highly_variable_genes(adata)
     sc.tl.pca(adata)
@@ -171,10 +172,10 @@ def desi_clustering(adata, resolution, prefix):
     # sc.tl.umap(adata)
     sc.tl.leiden(adata, n_iterations=2, resolution=resolution)
     adata.obs['clustering.scanpy'] = [int(x) for x in adata.obs['leiden']]
-    spatialdimplot_desi(adata, 'clustering.scanpy', prefix)
+    spatialdimplot_desi(adata, 'clustering.scanpy', prefix, col16)
     return adata
 
-def get_final_matrix(df_desi_unlm_filter):
+def get_final_matrix(df_desi_unlm_filter, get_final_matrix):
     dic_x = dict(zip(np.sort(df_desi_unlm_filter['x'].unique()), range(len(np.sort(df_desi_unlm_filter['x'].unique())))))
     dic_y = dict(zip(np.sort(df_desi_unlm_filter['y'].unique()), range(len(np.sort(df_desi_unlm_filter['y'].unique())))))
     df_desi_unlm_filter['x_array'] = df_desi_unlm_filter['x'].map(dic_x)
@@ -208,12 +209,8 @@ def spatialfeatureplot_desi(adata, gene, prefix, cmap):
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1, hspace=0.1, wspace=0.1)
     ax.figure.savefig(f'{prefix}.pdf')
 
-def spatialdimplot_desi(adata, label, prefix):
+def spatialdimplot_desi(adata, label, prefix, col16):
     
-    col16 = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4',
-        '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324',
-        '#fffac8', '#800000', '#aaffc3', '#808000']
-
     spot_row = np.max(adata.obs['x_array_plot']) - np.min(adata.obs['x_array_plot'])
     spot_col = np.max(adata.obs['y_array_plot']) - np.min(adata.obs['y_array_plot'])
     
@@ -249,7 +246,7 @@ def select_contour(raw_img, contours, threshold):
             selected_countours.append(cur_counter)
     return selected_countours
 
-def plot_cluster_border(adata, prefix, threshold_border):
+def plot_cluster_border(adata, prefix, threshold_border, col16):
     spot_row = np.max(adata.obs['x_array_plot']) - np.min(adata.obs['x_array_plot'])
     spot_col = np.max(adata.obs['y_array_plot']) - np.min(adata.obs['y_array_plot'])
 
