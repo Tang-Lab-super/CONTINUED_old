@@ -175,7 +175,7 @@ def desi_clustering(adata, resolution, prefix, col16):
     spatialdimplot_desi(adata, 'clustering.scanpy', prefix, col16)
     return adata
 
-def get_final_matrix(df_desi_unlm_filter, get_final_matrix):
+def get_final_matrix(df_desi_unlm_filter, tissue_mask):
     dic_x = dict(zip(np.sort(df_desi_unlm_filter['x'].unique()), range(len(np.sort(df_desi_unlm_filter['x'].unique())))))
     dic_y = dict(zip(np.sort(df_desi_unlm_filter['y'].unique()), range(len(np.sort(df_desi_unlm_filter['y'].unique())))))
     df_desi_unlm_filter['x_array'] = df_desi_unlm_filter['x'].map(dic_x)
